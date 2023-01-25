@@ -1,0 +1,32 @@
+# +----------------------------------------------------------------------------+
+# | Libptc 0.4 * Tools collection                                              |
+# | Copyright (C) 2003-2005 Pozsar Zsolt <pozsarzs@axelero.hu>                 |
+# | sample.pal                                                                 |
+# | Colour set file.                                                           |
+# +----------------------------------------------------------------------------+
+# Colours:
+# base foreground,
+# base background,
+# message box foreground,
+# message box background,
+# error message box foreground,
+# error message box background,
+# header, footer, menu foreground,
+# header, footer, menu highlighted text,
+# header, footer, menu background,
+# field-cursor foreground,
+# field-cursor highlighted text,
+# field-cursor background.
+
+white
+blue
+black
+lightgray
+white
+red
+black
+blue
+lightgray
+white
+lightblue
+blue

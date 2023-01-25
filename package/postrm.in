@@ -1,0 +1,3 @@
+#!/bin/bash
+rm @prefix@/lib/libptc.so.0.4.1 @prefix@/lib/libptc.so.0
+ldconfig

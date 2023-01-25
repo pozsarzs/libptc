@@ -1,0 +1,11 @@
+Package: libptc
+Version: 0.4
+Section: libs
+Priority: extra
+Architecture: i586
+Depends:
+Installed-Size: 395 kB
+Maintainer: Pozsar Zsolt <pozsarzs@axelero.hu>
+Description: Pozsi's tools collection.
+ Licenc: GNU Lesser GPL 2.1 or later.
+ Homepage: http://www.axelero.hu/pozsarzs.

@@ -1,0 +1,56 @@
+Libptc installation instructions for Linux operation system
+===========================================================
+
+1. Install
+----------
+
+a. Installation from source package
+
+    Downloaded file is 'libptc-0.4.tar.gz'.
+
+    $ tar -xzf libptc-0.4.tar.gz
+    $ cd libptc-0.4
+    $ ./configure [--prefix install_path]
+    $ make
+    # make install
+
+b. Installation from binary package
+
+    Downloaded file is 'libptc-0.4-1.i586.rpm' or
+                       'libptc_0.4_i586.deb' or
+		       'libptc-0.1-i586-1.tgz'.
+
+    # rpm -ivh libptc-0.4-1.i586.rpm
+		or
+    # dpkg -i libptc_0.4_i586.deb
+		or
+    # installpkg libptc-0.1-i586-1.tgz
+
+2. Uninstall
+------------
+
+a. Remove with 'make'
+
+    $ cd libptc-0.4
+    # make uninstall
+
+b. Remove with package manager
+
+    # rpm -e libptc
+	or
+    # dpkg -r libptc
+	or
+    # removepkg libptc
+
+3. Packaging
+------------
+
+    # cd libptc-0.4
+    # make rpm
+	or
+    # make deb
+	or
+    # make tgz
+
+Debian and Slackware package will be in '/usr/src', RPM package will be in 
+'/usr/src/RPM/RPMS/ix86' directory.

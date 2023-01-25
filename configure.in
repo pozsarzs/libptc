@@ -1,0 +1,62 @@
+dnl +--------------------------------------------------------------------------+
+dnl | Libptc 0.4 * Tools collection                                            |
+dnl | Copyright (C) 2003-2005 Pozsar Zsolt <pozsarzs@axelero.hu>               |
+dnl | configure.in                                                             |
+dnl | Autoconf input file.                                                     |
+dnl +--------------------------------------------------------------------------+
+
+AC_INIT(source/ptc.pp)
+AC_CONFIG_AUX_DIR(config)
+AC_CANONICAL_SYSTEM
+
+AC_PREFIX_DEFAULT("/usr/local")
+test x"$prefix" = xNONE && prefix="$ac_default_prefix"
+
+AC_PATH_PROG(rm, rm, no)
+AC_PATH_PROG(install, install, no)
+AC_CHECK_PROGS(make, gmake make)
+AC_CHECK_PROGS(havefpc,ppc386,no)
+
+test x"$havefpc" = xno && \
+  AC_MSG_ERROR(There is not FreePascal compiler on your system.)
+
+version=`cat document/VERSION`
+
+case $target_cpu in
+  'i586') fpflag='-Op2';;
+  'i386') fpflag='-Op1';;
+esac
+
+AC_SUBST(version)
+AC_SUBST(arch)
+AC_SUBST(prefix)
+AC_SUBST(bindir)
+AC_SUBST(sysconfdir)
+AC_SUBST(libdir)
+AC_SUBST(datadir)
+AC_SUBST(install)
+AC_SUBST(make)
+AC_SUBST(rm)
+AC_SUBST(fpflag)
+
+AC_OUTPUT(  Makefile.global \
+	    document/libptc.3 \
+	    document/hu/libptc.3 \
+	    package/doinst.sh \
+	    package/postinst \
+	    package/postrm \
+	    package/libptc.spec.post \
+	    package/libptc.spec.postun )
+
+chmod 755 package/postinst package/postrm
+
+echo "
+Summary
+=======
+    Op. system:		$host_os
+    Processor:		$target_cpu
+    Programme version	$version
+    Install prefix	$prefix
+
+  Type '${make}' for compilation and then '${make} install'.
+"

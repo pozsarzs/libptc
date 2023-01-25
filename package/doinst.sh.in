@@ -1,0 +1,4 @@
+( mv @prefix@/lib/libptc.so @prefix@/lib/libptc.so.0.4.1 )
+( ln -s @prefix@/lib/libptc.so.0.4.1 @prefix@/lib/libptc.so.0 )
+( ln -s @prefix@/lib/libptc.so.0.4.1 @prefix@/lib/libptc.so )
+( ldconfig )

@@ -1,0 +1,12 @@
+Summary: Pozsi's tools collection
+Name: libptc
+Version: 0.4
+Release: 1
+License: GNU Lesser GPL 2.1 or later
+Packager: Pozsar Zsolt <pozsarzs@axelero.hu>
+Group: System/Libraries
+Url: http://www.axelero.hu/pozsarzs
+BuildRoot: /usr/src/RPM/BUILD
+
+%description
+Pozsi's tools collection.

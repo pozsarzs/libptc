@@ -1,0 +1,56 @@
+Libptc telepítési útmutató Linux operációs rendszerhez
+======================================================
+
+1. Telepítés
+------------
+
+a. Telepítés forráscsomagból
+
+    Letöltött fájl: 'libptc-0.4.tar.gz'.
+
+    $ tar -xzf libptc-0.4.tar.gz
+    $ cd libptc-0.4
+    $ ./configure [--prefix elérési út]
+    $ make
+    # make install
+
+b. Telepítés bináris csomagból
+
+    Letöltött fájl: 'libptc-0.4-1.i586.rpm',
+                    'libptc_0.4_i586.deb' vagy
+                    'libptc-0.1-i586-1.tgz'.
+
+    # rpm -ivh libptc-0.4-1.i586.rpm
+		vagy
+    # dpkg -i libptc_0.4_i586.deb
+                vagy
+    # installpkg libptc-0.1-i586-1.tgz
+
+2. Eltávolítás
+--------------
+
+a. Forráscsomagból telepített program esetén
+
+    $ cd libptc-0.4
+    # make uninstall
+
+b. Eltávolítás csomag kezelõvel
+
+    # rpm -e libptc
+	vagy
+    # dpkg -r libptc
+        vagy   
+    # removepkg libptc
+
+3. Csomagolás
+-------------
+
+    # cd libptc-0.4
+    # make rpm
+	vagy
+    # make deb
+        vagy
+    # make tgz
+
+A Debian és a Slackware csomag az '/usr/src', az RPM csomag az
+'/usr/src/RPM/RPMS/ix86' könyvtárba fog kerülni.

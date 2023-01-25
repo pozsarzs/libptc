@@ -1,0 +1,14 @@
+2003-04-06 Pozsar Zsolt <pozsarzs@westel900.net>
+	* Version 0.2. New functions and procedures:
+	Win3d, wini3d, message_box3d, error_box3d, menu3d, inputbox3d,
+	fselect3d, dosshell.
+
+2004-01-12 Pozsar Zsolt <pozsarzs@westel900.net>
+	* Version 0.3. New functions and procedures:
+	Rmchr1, rmchr2, rmchr3, rmchr4, stringconverter.
+
+2005-03-12 Pozsar Zsolt <pozsarzs@axelero.hu>
+	* Version 0.4:
+	Console size setting on Linux.
+	Central aligned message and input boxes.
+	Static/dynamic link option on Linux and Windows.

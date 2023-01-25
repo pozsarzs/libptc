@@ -1,0 +1,289 @@
+.\"
+.TH "Libptc" "3" "0.4" "Pozsar Zsolt" "Tools collection"
+.SH "NAME"
+.LP 
+PTC Tools collection
+.SH "DESCRIPTION"
+.LP 
+    The Libptc is an easy to use tools collection for own programmes. It
+useable on DOS, Windows and Linux. It has written on FreePascal, but the
+tools is available on C language.
+    
+    If you want use this tools with static linking you must declare
+'ptc' unit:
+
+    uses ptc;
+
+But you use it dynamic linking, declare external functions and procedures
+in following format, before your ones:
+
+    function load_pal(filename: string): boolean;
+      cdecl; external 'ptc';
+
+Available tools:
+
+.br
+\fBprocedure console_columns(num: byte);\fP
+.br
+It sets number of console columns. Minimal number is 40.
+
+.br
+\fBprocedure console_lines(num: byte);\fP
+.br
+It sets number of console lines. Minimal number is 15.
+
+.br
+\fBprocedure background;\fP
+.br
+It makes solid background.
+
+.br
+\fBprocedure error_box(title, message, foot_message: string);\fP and
+.br
+\fBprocedure error_box3d(title, message, foot_message: string);\fP
+.br
+It makes an error message box on centre of the screen. Title and
+message are in the box, foot_message is on the footer.
+
+.br
+\fBprocedure ewrite(fg_color, hl_color: byte; text: string);\fP
+.br
+It is a writing procedure with text highlightning. '<' and '>' characters sign
+begin and end of highlightened text.
+
+.br
+\fBprocedure footer(title: string);\fP
+.br
+Header creates a header line on the bottom of screen.
+
+.br
+\fBprocedure header(title: string);\fP
+.br
+Header creates a header line on the top of screen.
+
+.br
+\fBprocedure line(x1, x2, y: byte);\fP
+.br
+It draws a line from x1,y to x2,y coordinates.
+
+.br
+\fBprocedure message_box(title, message, foot_message: string);\fP and
+.br
+\fBprocedure message_box3d(title, message, foot_message: string);\fP
+.br
+It makes a message box on centre of the screen.
+
+.br
+\fBprocedure dosshell(message: string);\fP
+.br
+Temporary exit to DOS. (It is not useable on Linux.)
+
+.br
+\fBprocedure quit(halt_code: byte; message: string);\fP
+.br
+Quit restores screen and quits from programme.
+
+.br
+\fBprocedure win(x1,y1,x2,y2: byte);\fP and
+.br
+\fBprocedure win3d(x1,y1,x2,y2: byte);\fP and
+.br
+\fBprocedure wini3d(x1,y1,x2,y2: byte);\fP
+.br
+This procedure makes window with frame. Set colours before call this
+procedure.
+
+.br
+\fBfunction fselect(x1,y1 :byte; menuitems: fitems): string;\fP and
+.br
+\fBfunction fselect3d(x1,y1 :byte; menuitems: fitems): string;\fP
+.br
+FSelect function creates a file selection box. X1 and Y1 coordinates are
+the left-top corner of box. Returns with then choosen item. If you want
+use it, insert 'fitem' declaration in your source code:
+
+.br
+type fitems=array[1..1024] of string[10];
+
+.br
+\fBfunction inputbox(title, message, cancel, foot_message: string;\fP
+.br
+\fB  tl: byte): string;\fP and
+.br
+\fBfunction inputbox3d(title, message, cancel, foot_message: string;\fP
+.br
+\fB  tl: byte): string;\fP
+.br
+Inputbox function make a input box on the middle of the screen. Input text
+is 'tl' characters length. Title and message are in the box, foot_message is
+on the footer.
+
+.br
+\fBfunction load_pal(filename: string): boolean; \fP
+.br
+This function loads colour set file. If this action is failed, the
+return value is false. (There is a sample file in
+'@prefix@/share/doc/libptc-0.4' directory.
+
+.br
+\fBfunction menu(x1,y1: byte; menuitems: itemrec): byte;\fP and
+.br
+\fBfunction menu3d(x1,y1: byte; menuitems: itemrec): byte;\fP
+.br
+Menu function creates a menu box. X1 and Y1 coordinates are the left-top
+corner of menubox. Returns value is number of the selected item. If you
+want use it, insert 'itemrec' declaration in your source code:
+
+.br
+type itemrec=record
+.br
+    i1,  i2,  i3,  i4,  i5,  i6,  i7,
+.br
+    i8,  i9,  i10, i11, i12, i13, i14,
+.br
+    i15, i16, i17, i18, i19, i20: string[50];
+.br
+    end;
+
+.br
+\fBfunction base_background: byte;\fP
+.br
+This function returns base background colour.
+
+.br
+\fBfunction base_foreground: byte;\fP
+.br
+It returns base foreground colour.
+
+.br
+\fBfunction button_background: byte;\fP
+.br
+This function returns background colour of buttons.
+
+.br
+\fBfunction button_foreground: byte;\fP
+.br
+This function returns text colour of buttons.
+
+.br
+\fBfunction button_highlighted: byte;\fP
+.br
+It function returns highlighted button label colour.
+
+.br
+\fBfunction error_background: byte;\fP
+.br
+Error_background returns background colour of error message boxes.
+
+.br
+\fBfunction error_foreground: byte;\fP
+.br
+This function returns label colour of error message boxes.
+
+.br
+\fBfunction menu_background: byte;\fP
+.br
+It returns menu, footer and header background colour.
+
+.br
+\fBfunction menu_foreground: byte;\fP
+.br
+It returns menu, footer and header label colour.
+
+.br
+\fBfunction menu_highlighted: byte;\fP
+.br
+This function returns menu, footer and header highlighted label colour.
+
+.br
+\fBfunction message_background: byte;\fP
+.br
+This function returns background colour of message boxes.
+
+.br
+\fBfunction message_foreground: byte;\fP
+.br
+This function returns text colour of message boxes.
+
+.br
+\fBfunction rmchr1(input: string): string;\fP
+.br
+It removes all space and tabulator from input string.
+
+.br
+\fBfunction rmchr2(input: string): string;\fP
+.br
+It remove all characters after hash-sign from input string.
+
+.br
+\fBfunction rmchr3(input: string): string;\fP
+.br
+It remove space and tabulator from begin of line.
+
+.br
+\fBfunction rmchr4(input: string): string;\fP
+.br
+It removes space and tabulator from begin of line and all remark from
+input string.
+
+.br
+\fBfunction stringconverter(input: string; language: string[2]): string;\fP
+.br
+It converts '&????;' codes to accentuated letters.
+.SH "FILES"
+.LP 
+\fI@prefix@/lib/libptc.so.0.4.1\fP
+.br 
+    Real name of library file.
+.br 
+\fI@prefix@/lib/libptc.so.0\fP
+.br 
+    Shared object name of library file (link).
+.br 
+\fI@prefix@/lib/libptc.so\fP
+.br 
+    Editor name of library file (link).
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/ChangeLog\fP
+.br 
+    Log file.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/COPYING\fP
+.br 
+    GNU Library General Public Licence.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/README\fP
+.br 
+    General information on English.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/sample.pal\fP
+.br 
+    Sample palette file.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/hu/README\fP
+.br 
+    General information on Hungarian.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/hu/sample.pal\fP
+.br 
+    Sample palette file.
+.br 
+\fI@prefix@/share/man/man3/libptc.3\fP
+.br
+   English manual page.
+.br
+\fI@prefix@/share/man/hu/man3/libptc.3\fP
+.br 
+    Hungarian manual page.
+.SH "AUTHOR"
+.LP 
+Pozsar Zsolt
+.br
+Honlap: http://www.axelero.hu/pozsarzs
+.br
+E-mail: pozsarzs@axelero.hu, pozsarzs@t-email.hu
+.br
+ICQ:    278777359
+.br
+MSN:    pozsarzs@axelero.hu
+.br

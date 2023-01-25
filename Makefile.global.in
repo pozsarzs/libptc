@@ -1,0 +1,25 @@
+# +----------------------------------------------------------------------------+
+# | Libptc 0.4 * Tools collection                                              |
+# | Copyright (C) 2003-2005 Pozsar Zsolt <pozsarzs@axelero.hu>                 |
+# | Makefile.global(.in)                                                       |
+# | Input file for configure script.                                           |
+# +----------------------------------------------------------------------------+
+
+name		= libptc
+version		= @version@
+arch		= @host_cpu@
+
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+libdir		= @libdir@
+datadir		= @datadir@
+srcdir		= @srcdir@
+
+binmode		= 0755
+txtmode		= 0444
+
+install		= @install@
+make		= @make@
+rm		= @rm@ --force
+
+fpflag		= @fpflag@ -TLinux

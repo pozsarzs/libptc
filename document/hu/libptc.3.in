@@ -1,0 +1,293 @@
+.\"
+.TH "Libptc" "3" "0.4" "Pozsár Zsolt" "Kellékgyûjtemény"
+.SH "NÉV"
+.LP 
+PTC Kellékgyûjtemény
+.SH "LEÍRÁS"
+.LP 
+    A Libptc egy könnyen használható kellékgyûjtemény a saját
+programjainkhoz. Használható DOS-on, Windows-on és Linux-on egyaránt. A
+könyvtár FreePascalban lett megírva, de az eljárások elérhetõk C-ben is.
+Ha sztatikusan akarja a programba fordítani, akkor deklarálja a 'ptc'
+unit-ot:
+
+    uses ptc;
+
+Ha dinamikusan akarja a programhoz csatolni, akkor a
+külsõ eljárásokat és függvényeket a következõ módon tudja elõírni:
+
+    function load_pal(filename: string): boolean;
+      cdecl; external 'ptc';
+
+Ezeket a saját eljárásai és függvényei elé illessze be.
+
+Elérhetõ kellékek:
+
+.br
+\fBprocedure console_columns(num: byte);\fP
+.br
+Beállítja a konzol oszlopainak számát. (Minimum: 40)
+
+.br
+\fBprocedure console_lines(num: byte);\fP
+.br
+Beállítja a konzol sorainak számát. (Minimum: 15)
+
+.br
+\fBprocedure background;\fP
+.br
+Egyszerû hátteret készít.
+
+.br
+\fBprocedure error_box(title, message, foot_message: string);\fP és
+.br
+\fBprocedure error_box3d(title, message, foot_message: string);\fP
+.br
+A képernyõ közepén megjelenít egy hibaüzenet ablakot. A title és a message a
+dobozan, a foot_message a legalsó sorban jelenik meg.
+
+.br
+\fBprocedure ewrite(fg_color, hl_color: byte; text: string);\fP
+.br
+Ez egy kiíró eljárás szövegkiemeléssel. A kiemelés kezdetét és végét a '<'
+és a '>' karakterek jelzik.
+
+.br
+\fBprocedure footer(title: string);\fP
+.br
+Állapotsort képez a legalsó sorban.
+
+.br
+\fBprocedure header(title: string);\fP
+.br
+Fejlécet képez a legfelsõ sorban.
+
+.br
+\fBprocedure line(x1, x2, y: byte);\fP
+.br
+Vonalat rajzol az x1,y koordinátáktól az x2,y-ig.
+
+.br
+\fBprocedure message_box(title, message, foot_message: string);\fP és
+.br
+\fBprocedure message_box3d(title, message, foot_message: string);\fP
+.br
+A képernyõ közepén megjelenít egy üzenet ablakot. A title és a message a
+dobozan, a foot_message a legalsó sorban jelenik meg.
+
+.br
+\fBprocedure dosshell(message: string);\fP
+.br
+Ideiglenes kilépés a DOS-ba. (Linux-on nem elérhetõ.)
+
+.br
+\fBprocedure quit(halt_code: byte; message: string);\fP
+.br
+Kilépés képernyõ visszaállítással.
+
+.br
+\fBprocedure win(x1,y1,x2,y2: byte);\fP és
+.br
+\fBprocedure win3d(x1,y1,x2,y2: byte);\fP és
+.br
+\fBprocedure wini3d(x1,y1,x2,y2: byte);\fP
+.br
+Keretezett ablakot készít. Állítsa be a színeket, mielõtt meghívja ezt az
+eljárást.
+
+.br
+\fBfunction fselect(x1,y1 :byte; menuitems: fitems): string;\fP és
+.br
+\fBfunction fselect3d(x1,y1 :byte; menuitems: fitems): string;\fP
+.br
+Az fselect függvény egy fájl választó alakot képez, melynek a bal felsõ
+koordinátáját az x1 és az y1 adja meg. A visszatérési érték a választott
+menüsor tartalma. Ha használni akarja illessze a következõ sort a
+forráskódjába:
+
+.br
+type fitems=array[1..1024] of string[10];
+
+.br
+\fBfunction inputbox(title, message, cancel, foot_message: string;\fP
+.br
+\fB  tl: byte): string;\fP és
+.br
+\fBfunction inputbox3d(title, message, cancel, foot_message: string;\fP
+.br
+\fB  tl: byte): string;\fP
+.br
+Ez a függvény egy beviteli ablakot képez a képernyõ közepén. A bevihetõ
+szöveg legfeljebb 'tl' karakter hosszú lehet. A title és a message a
+dobozan, a foot_message a legalsó sorban jelenik meg.
+
+.br
+\fBfunction load_pal(filename: string): boolean; \fP
+.br
+Beolvassa a színbeállítás fájlt. Ha ez nem sikerül a visszaadott érték
+hamis, ha igen, akkor igaz. (Minta állomány az
+'@prefix@/share/doc/libptc-0.1' könyvtárban található.
+
+.br
+\fBfunction menu(x1,y1: byte; menuitems: itemrec): byte;\fP és
+.br
+\fBfunction menu3d(x1,y1: byte; menuitems: itemrec): byte;\fP 
+.br
+A menu függvény egy menü ablakot képez, melynek a bal felsõ
+koordinátáját az x1 és az y1 adja meg. A visszatérési érték a választott
+menüsor száma. Ha használni akarja illessze a következõ sorokat a
+forráskódjába:
+
+.br
+type itemrec=record
+.br
+    i1,  i2,  i3,  i4,  i5,  i6,  i7,
+.br
+    i8,  i9,  i10, i11, i12, i13, i14,
+.br
+    i15, i16, i17, i18, i19, i20: string[50];
+.br
+    end;
+
+.br
+\fBfunction base_background: byte;\fP
+.br
+Az alap háttérszínt adja vissza.
+
+.br
+\fBfunction base_foreground: byte;\fP
+.br
+Az alap szövegszínt adja vissza.
+
+.br
+\fBfunction button_background: byte;\fP
+.br
+A gombok háttérszínét adja vissza.
+
+.br
+\fBfunction button_foreground: byte;\fP
+.br
+A gombok szövegszínét adja vissza.
+
+.br
+\fBfunction button_highlighted: byte;\fP
+.br
+A gombok kiemelt szövegének színét adja vissza.
+
+.br
+\fBfunction error_background: byte;\fP
+.br
+Visszatérési értéke a hibaüzenet ablakok hátterének színe.
+
+.br
+\fBfunction error_foreground: byte;\fP
+.br
+Visszaadja a hibaüzenet ablakok szövegszínét.
+
+.br
+\fBfunction menu_background: byte;\fP
+.br
+A menü, a fejléc és az állapotsor háttérszínét adja vissza.
+
+.br
+\fBfunction menu_foreground: byte;\fP
+.br
+A menü, a fejléc és az állapotsor elõtérszínét adja vissza.
+
+.br
+\fBfunction menu_highlighted: byte;\fP
+.br
+A menü, a fejléc és az állapotsor kiemelt szövegének színét adja vissza.
+
+.br
+\fBfunction message_background: byte;\fP
+.br
+Visszatérési értéke az üzenet ablakok hátterének színe.
+
+.br
+\fBfunction message_foreground: byte;\fP
+.br
+Visszaadja a hibaüzenet ablakok szövegszínét.
+
+.br
+\fBfunction rmchr1(input: string): string;\fP
+.br
+Eltávolítja a szóköz és a tabulátor karaktereket a bemeneti karakterláncból.
+
+.br
+\fBfunction rmchr2(input: string): string;\fP
+.br
+Eltávolítja a kettõskereszt jel után lévõ összes karaktert.
+
+.br
+\fBfunction rmchr3(input: string): string;\fP
+.br
+Eltávolítja a sor elején lévõ szóköz és a tabulátor karaktereket.
+
+.br
+\fBfunction rmchr4(input: string): string;\fP
+.br
+Eltávolítja a sor elején lévõ szóköz és a tabulátor karaktereket,
+valamint a megjegyzéseket.
+
+.br
+\fBfunction stringconverter(input: string; language: string[2]): string;\fP
+.br
+Átalakítja a '&????;' kódokat ékezetes betûvé.
+.SH "ÁLLOMÁNYOK"
+.LP 
+\fI@prefix@/lib/libptc.so.0.4.1\fP
+.br 
+    A könyvtár valódi neve.
+.br 
+\fI@prefix@/lib/libptc.so.0\fP
+.br 
+    Megosztott objektumnév (csatolás).
+.br 
+\fI@prefix@/lib/libptc.so\fP
+.br 
+    Szerkesztõnév (csatolás).
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/ChangeLog\fP
+.br 
+    Változás napló angol nyelven.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/COPYING\fP
+.br 
+    GNU Library General Public Licence.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/README\fP
+.br 
+    Általános információk angolul.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/sample.pal\fP
+.br 
+    Minta színbeállítás fájl.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/hu/README\fP
+.br 
+    Általános információk magyarul.
+.br 
+\fI@prefix@/share/doc/libptc\-0.4/hu/sample.pal\fP
+.br 
+     Minta színbeállítás fájl.
+.br 
+\fI@prefix@/share/man/man3/libptc.3\fP
+.br
+   Angol kézikönyv oldal.
+.br
+\fI@prefix@/share/man/hu/man3/libptc.3\fP
+.br 
+    Magyar kézikönyv oldal.
+.SH "SZERZÕ"
+.LP 
+Pozsár Zsolt
+.br
+Honlap: http://www.axelero.hu/pozsarzs
+.br
+E-mail: pozsarzs@axelero.hu, pozsarzs@t-email.hu
+.br
+ICQ:    278777359
+.br
+MSN:    pozsarzs@axelero.hu
+.br

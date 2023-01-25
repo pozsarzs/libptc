@@ -1,0 +1,33 @@
+Libptc kellékgyûjtemény
+=======================
+
+1. Általános információk
+------------------------
+    A Libptc egy könnyen használható kellékgyûjtemény a saját
+fejlesztésû programjainkhoz. Használható DOS-on, Windows-on és Linux-on
+egyaránt. A könyvtár FreePascalban lett megírva, de az eljárásokat és
+függvényeket C nyelvû programból is meg lehet hívni. Ezek leírását lásd
+a kézikönyv oldalon.
+
+2. Letöltés és kapcsolatok
+--------------------------
+Honlap: http://www.axelero.hu/pozsarzs
+E-mail:	pozsarzs@axelero.hu, pozsarzs@t-email.hu
+ICQ:	278777359
+MSN:	pozsarzs@axelero.hu
+
+3. Fontos információk
+---------------------
+Copyright (C) 2003-2005, Pozsár Zsolt
+
+  Ez a könyvtár szabad szoftver; terjeszthetõ és/vagy módosítható a
+Free Software Foundation által publikált GNU Lesser General Public
+License 2.1 vagy késõbbi változata alapján.
+  A könyvtár annak reményében kerül terjesztésre, hogy hasznosnak
+bizonyul, de GARANCIA NÉLKÜL; még a PIACKÉPESSÉG illetve egy BIZONYOS
+CÉLRA VALÓ ALKALMASSÁG sincs garantálva. További részletek a GNU Lesser
+General Public License-ben. 
+  A programmal együtt Önnek kapnia kellett egy példányt a GNU Lesser
+General Public License-bõl; ha nem így történt, írjon a következõ címre:
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.

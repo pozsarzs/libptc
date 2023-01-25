@@ -1,0 +1,11 @@
+%changelog
+* Sat Mar 12 2005 Pozsar Zsolt <pozsarzs@axelero.hu>
+- Version 0.4. Repaired bugs and static/dynamic compile option on Linux and Windows.
+
+* Sun Jan 12 2004 Pozsar Zsolt <pozsarzs@westel900.net>
+- Version 0.3. New functions and procedures: rmchr1, rmchr2, rmchr3,
+  rmchr4, stringconverter.
+
+* Sun Apr 06 2003 Pozsar Zsolt <pozsarzs@westel900.net>
+- Version 0.2. New functions and procedures: Win3d, wini3d,
+  message_box3d, error_box3d, menu3d, inputbox3d, fselect3d, dosshell.

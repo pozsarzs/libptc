@@ -1,0 +1,33 @@
+# +----------------------------------------------------------------------------+
+# | Libptc 0.4 * Kellékgyûjtemény                                              |
+# | Copyright (C) 2003-2005 Pozsár Zsolt <pozsarzs@axelero.hu>                 |
+# | sample.pal                                                                 |
+# | Minta paletta állomány.                                                    |
+# +----------------------------------------------------------------------------+
+
+# Színek:
+# alap elõtér,
+# alap háttér,
+# üzenet ablak elõtér,
+# üzenet ablak háttér,
+# hibaüzenet ablak elõtér,
+# hibaüzenet ablak háttér,
+# fejléc, lábléc, menü elõtér,
+# fejléc, lábléc, menü kiemelt szöveg,
+# fejléc, lábléc, menü háttér,
+# mezõ kurzor elõtér,
+# mezõ kurzor kiemelt szöveg,
+# mezõ kurzor háttér.
+
+white
+blue
+black
+lightgray
+white
+red
+black
+blue
+lightgray
+white
+lightblue
+blue
